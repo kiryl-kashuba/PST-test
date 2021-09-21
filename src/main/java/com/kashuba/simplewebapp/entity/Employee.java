@@ -52,8 +52,6 @@ public class Employee {
   @Enumerated(EnumType.STRING)
   @Column(name = "gender")
   private Gender gender;
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-  private Date dateOfBirth;
   @ManyToOne(optional = false)
   @JoinColumn(name = "department_id", nullable = true, insertable = true, updatable = true)
   private Department department;
@@ -62,17 +60,25 @@ public class Employee {
   private Characteristic characteristic;
 
   public Employee(long id, String firstName, String lastName, String jobTitle,
-      Gender gender, Date dateOfBirth, Department department) {
+      Gender gender, Department department) {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
     this.jobTitle = jobTitle;
     this.gender = gender;
-    this.dateOfBirth = dateOfBirth;
     this.department = department;
   }
 
   public Employee(long id) {
     this.id = id;
+  }
+
+  public Employee(String firstName, String lastName, String jobTitle,
+      Gender gender, Department department) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.jobTitle = jobTitle;
+    this.gender = gender;
+    this.department = department;
   }
 }

@@ -14,7 +14,6 @@ public class EmployeeConverter {
         employeeDto.getLastName(),
         employeeDto.getJobTitle(),
         employeeDto.getGender(),
-        employeeDto.getDateOfBirth(),
         new Department(employeeDto.getDepartmentId()));
   }
 
@@ -24,7 +23,6 @@ public class EmployeeConverter {
         employee.getLastName(),
         employee.getJobTitle(),
         employee.getGender(),
-        employee.getDateOfBirth(),
         employee.getDepartment().getId());
   }
 }

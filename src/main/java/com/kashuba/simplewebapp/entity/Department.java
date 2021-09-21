@@ -38,4 +38,8 @@ public class Department {
   public Department(long id) {
     this.id = id;
   }
+
+  public Department(String name) {
+    this.name = name;
+  }
 }

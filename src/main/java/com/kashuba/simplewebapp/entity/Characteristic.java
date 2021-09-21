@@ -31,11 +31,20 @@ public class Characteristic {
   private Integer numberCompletedProjects;
   private String maritalStatus;
   private String hobbies;
-  @OneToOne(optional = true, cascade = CascadeType.ALL, orphanRemoval = true)
+  @OneToOne(optional = true, cascade = CascadeType.PERSIST, orphanRemoval = true)
   @JoinColumn(name = "employee_id", nullable = true, unique = true)
   private Employee employee;
 
   public Characteristic(long id) {
     this.id = id;
+  }
+
+  public Characteristic(String temperament, Integer numberCompletedProjects, String maritalStatus,
+      String hobbies, Employee employee) {
+    this.temperament = temperament;
+    this.numberCompletedProjects = numberCompletedProjects;
+    this.maritalStatus = maritalStatus;
+    this.hobbies = hobbies;
+    this.employee = employee;
   }
 }

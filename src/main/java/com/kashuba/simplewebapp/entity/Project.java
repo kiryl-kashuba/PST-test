@@ -38,4 +38,9 @@ public class Project {
     this.name = name;
     this.totalProfit = totalProfit;
   }
+
+  public Project(String name, Long totalProfit) {
+    this.name = name;
+    this.totalProfit = totalProfit;
+  }
 }
