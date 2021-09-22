@@ -20,9 +20,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/employees")
 public class EmployeeController {
 
-
   @Autowired
   private EmployeeService defaultEmployeeService;
+
+  @ApiOperation(value = "Add employee to project")
+  @GetMapping("/add-project/{idEmployee}/{idProject}")
+  public Long addEmployeeToProject(@PathVariable Long idEmployee, @PathVariable Long idProject) {
+    return defaultEmployeeService.addEmployeeToProject(idEmployee, idProject);
+  }
 
   @ApiOperation(value = "Create employee")
   @PostMapping

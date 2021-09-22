@@ -31,7 +31,7 @@ public class Characteristic {
   private Integer numberCompletedProjects;
   private String maritalStatus;
   private String hobbies;
-  @OneToOne(optional = true, cascade = CascadeType.PERSIST, orphanRemoval = true)
+  @OneToOne(optional = true, cascade = CascadeType.MERGE, orphanRemoval = true)
   @JoinColumn(name = "employee_id", nullable = true, unique = true)
   private Employee employee;
 

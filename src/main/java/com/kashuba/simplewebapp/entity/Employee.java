@@ -1,9 +1,7 @@
 package com.kashuba.simplewebapp.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.kashuba.simplewebapp.entity.enumeration.Gender;
-import java.util.Date;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -52,7 +50,7 @@ public class Employee {
   @Enumerated(EnumType.STRING)
   @Column(name = "gender")
   private Gender gender;
-  @ManyToOne(optional = false)
+  @ManyToOne(fetch = FetchType.EAGER, optional = false)
   @JoinColumn(name = "department_id", nullable = true, insertable = true, updatable = true)
   private Department department;
   @JsonBackReference

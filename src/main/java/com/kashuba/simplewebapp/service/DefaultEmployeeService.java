@@ -3,6 +3,7 @@ package com.kashuba.simplewebapp.service;
 import com.kashuba.simplewebapp.converter.EmployeeConverter;
 import com.kashuba.simplewebapp.dao.DepartmentRepository;
 import com.kashuba.simplewebapp.dao.EmployeeRepository;
+import com.kashuba.simplewebapp.dao.ProjectRepository;
 import com.kashuba.simplewebapp.dto.EmployeeDto;
 import com.kashuba.simplewebapp.entity.Employee;
 import java.util.List;
@@ -23,10 +24,20 @@ public class DefaultEmployeeService implements EmployeeService {
   @Autowired
   private DepartmentRepository departmentRepository;
 
+  @Autowired
+  private ProjectRepository projectRepository;
+
   @Override
   public Long create(EmployeeDto employeeDto) {
     Employee employee = employeeConverter.toModel(employeeDto);
     employee.setDepartment(departmentRepository.getById(employeeDto.getDepartmentId()));
+    return (employeeRepository.saveAndFlush(employee)).getId();
+  }
+
+  @Override
+  public Long addEmployeeToProject(Long idEmployee, Long idProject) {
+    Employee employee = employeeRepository.getById(idEmployee);
+    employee.getEmployeeProject().add(projectRepository.findById(idProject).get());
     return (employeeRepository.saveAndFlush(employee)).getId();
   }
 
