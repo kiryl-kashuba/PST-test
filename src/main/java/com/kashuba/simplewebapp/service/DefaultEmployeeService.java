@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -39,6 +41,11 @@ public class DefaultEmployeeService implements EmployeeService {
     Employee employee = employeeRepository.getById(idEmployee);
     employee.getEmployeeProject().add(projectRepository.findById(idProject).get());
     return (employeeRepository.saveAndFlush(employee)).getId();
+  }
+
+  @Override
+  public Page employeePageable(Pageable pageable) {
+    return employeeRepository.findAll(pageable);
   }
 
 //  public int update(EmployeeDto employeeDto) {

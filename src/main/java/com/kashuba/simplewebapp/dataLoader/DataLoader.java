@@ -83,8 +83,5 @@ public class DataLoader implements ApplicationRunner {
     projectRepository.save(new Project("KakDelaject", 10000000l));
     projectRepository.save(new Project("CoolPorject", 10000000l));
     projectRepository.save(new Project("KakDelaPorject", 10000000l));
-    employeeService.addEmployeeToProject(1L, 1L);
-    employeeService.addEmployeeToProject(2L, 2L);
-    employeeService.addEmployeeToProject(5L, 5L);
   }
 }

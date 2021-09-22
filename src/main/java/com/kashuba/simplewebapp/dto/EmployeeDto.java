@@ -31,4 +31,25 @@ public class EmployeeDto {
     this.gender = gender;
     this.departmentId = departmentId;
   }
+
+  public EmployeeDto(String firstName, String lastName, String jobTitle,
+      Gender gender) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.jobTitle = jobTitle;
+    this.gender = gender;
+  }
+
+  public EmployeeDto(long employeeDtoId) {
+    this.employeeDtoId = employeeDtoId;
+  }
+
+  public EmployeeDto(String firstName, String lastName, String jobTitle,
+      Gender gender, Long departmentId) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.jobTitle = jobTitle;
+    this.gender = gender;
+    this.departmentId = departmentId;
+  }
 }

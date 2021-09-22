@@ -7,6 +7,8 @@ import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,36 +23,42 @@ import org.springframework.web.bind.annotation.RestController;
 public class EmployeeController {
 
   @Autowired
-  private EmployeeService defaultEmployeeService;
+  private EmployeeService employeeService;
 
   @ApiOperation(value = "Add employee to project")
   @GetMapping("/add-project/{idEmployee}/{idProject}")
   public Long addEmployeeToProject(@PathVariable Long idEmployee, @PathVariable Long idProject) {
-    return defaultEmployeeService.addEmployeeToProject(idEmployee, idProject);
+    return employeeService.addEmployeeToProject(idEmployee, idProject);
+  }
+
+  @ApiOperation(value = "employeePageable")
+  @GetMapping(value = "/blogPageable")
+  Page employeePageable(Pageable pageable) {
+    return employeeService.employeePageable(pageable);
   }
 
   @ApiOperation(value = "Create employee")
   @PostMapping
   public Long create(@RequestBody EmployeeDto employeeDto) {
-    return defaultEmployeeService.create(employeeDto);
+    return employeeService.create(employeeDto);
   }
 
   @ApiOperation(value = "Find employee by ID")
   @GetMapping("/{id}")
   public Optional<EmployeeDto> get(@PathVariable Long id) {
-    return defaultEmployeeService.get(id);
+    return employeeService.get(id);
   }
 
   @ApiOperation(value = "Find all employees")
   @GetMapping("/all")
   public List<EmployeeDto> getAll() {
-    return defaultEmployeeService.getAll();
+    return employeeService.getAll();
   }
 
   @ApiOperation(value = "Delete employee")
   @DeleteMapping("/{id}")
   public void delete(@PathVariable Long id) {
-    defaultEmployeeService.delete(id);
+    employeeService.delete(id);
   }
 
 //  @PutMapping
