@@ -2,10 +2,6 @@ package com.kashuba.simplewebapp.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.kashuba.simplewebapp.entity.Employee;
-import javax.persistence.CascadeType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import lombok.Data;
 
 @Data
